@@ -25,7 +25,7 @@ export default function AddNote() {
           aria-hidden="true"
           className="fixed left-0 right-0 top-0 z-50 flex h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden bg-black bg-opacity-50">
           {/* Modal content */}
-          <div className="relative rounded-lg bg-white p-4 shadow sm:p-5">
+          <div className="relative w-full max-w-2xl rounded-lg bg-white p-4 shadow sm:p-5">
             {/* Modal header */}
             <div className="mb-4 flex items-center justify-between rounded-t border-b pb-4 sm:mb-5">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
@@ -42,7 +42,7 @@ export default function AddNote() {
             </div>
             {/* Modal body */}
             <form action="#">
-              <div className="mb-4 grid gap-4 sm:grid-cols-2">
+              <div className="mb-4">
                 <div>
                   <label
                     htmlFor="title"
@@ -90,16 +90,7 @@ export default function AddNote() {
               <button
                 type="submit"
                 className="inline-flex items-center rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300">
-                <svg
-                  className="-ml-1 mr-1 h-6 w-6"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    fillRule="evenodd"
-                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                    clipRule="evenodd"></path>
-                </svg>
+                <HiPlus className="mr-1 h-5 w-5" />
                 Add new note
               </button>
             </form>
