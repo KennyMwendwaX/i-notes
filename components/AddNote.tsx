@@ -1,12 +1,111 @@
+import { useState } from "react";
 import { HiPlus } from "react-icons/hi";
+import { MdClose } from "react-icons/md";
 
 export default function AddNote() {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleModalToggle = () => {
+    setShowModal(!showModal);
+  };
   return (
     <>
-      <button className="mb-4 flex items-center rounded-lg border border-gray-400 bg-transparent px-5 py-2.5 text-sm font-medium text-gray-700 hover:border-blue-700 hover:bg-blue-700 hover:text-gray-100 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-200">
+      <button
+        onClick={handleModalToggle}
+        className="mb-4 flex items-center rounded-lg border border-gray-400 bg-transparent px-5 py-2.5 text-sm font-medium text-gray-700 hover:border-blue-700 hover:bg-blue-700 hover:text-gray-100 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-200">
         <HiPlus className="mr-1 h-5 w-5" />
         Add Note
       </button>
+
+      {/* Modal */}
+      {showModal && (
+        <div
+          id="defaultModal"
+          tabIndex={-1}
+          aria-hidden="true"
+          className="fixed left-0 right-0 top-0 z-50 flex h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden bg-black bg-opacity-50">
+          {/* Modal content */}
+          <div className="relative rounded-lg bg-white p-4 shadow sm:p-5">
+            {/* Modal header */}
+            <div className="mb-4 flex items-center justify-between rounded-t border-b pb-4 sm:mb-5">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                Add Note
+              </h3>
+              <button
+                type="button"
+                onClick={handleModalToggle}
+                className="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900"
+                data-modal-toggle="defaultModal">
+                <MdClose className="h-6 w-6" />
+                <span className="sr-only">Close modal</span>
+              </button>
+            </div>
+            {/* Modal body */}
+            <form action="#">
+              <div className="mb-4 grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label
+                    htmlFor="title"
+                    className="mb-2 block text-sm font-medium text-gray-900">
+                    Title
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-blue-600"
+                    placeholder="Type note title"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="category"
+                    className="mb-2 block text-sm font-medium text-gray-900">
+                    Category
+                  </label>
+                  <select
+                    id="category"
+                    className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-blue-500">
+                    <option value="">Select category</option>
+                    <option value="TV">TV/Monitors</option>
+                    <option value="PC">PC</option>
+                    <option value="GA">Gaming/Console</option>
+                    <option value="PH">Phones</option>
+                  </select>
+                </div>
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="body"
+                    className="mb-2 block text-sm font-medium text-gray-900">
+                    Description
+                  </label>
+                  <textarea
+                    id="description"
+                    rows={4}
+                    className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+                    placeholder="Write your note here"></textarea>
+                </div>
+              </div>
+              <button
+                type="submit"
+                className="inline-flex items-center rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300">
+                <svg
+                  className="-ml-1 mr-1 h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    fillRule="evenodd"
+                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                    clipRule="evenodd"></path>
+                </svg>
+                Add new note
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </>
   );
 }
