@@ -43,7 +43,7 @@ export default function AddNote() {
             {/* Modal body */}
             <form action="#">
               <div className="mb-4">
-                <div>
+                <div className="mb-3">
                   <label
                     htmlFor="title"
                     className="mb-2 block text-sm font-medium text-gray-900">
@@ -58,7 +58,7 @@ export default function AddNote() {
                     required
                   />
                 </div>
-                <div>
+                <div className="mb-3">
                   <label
                     htmlFor="category"
                     className="mb-2 block text-sm font-medium text-gray-900">
