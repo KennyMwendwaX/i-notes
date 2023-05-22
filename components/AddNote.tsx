@@ -67,11 +67,14 @@ export default function AddNote() {
                   <select
                     id="category"
                     className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-blue-500">
-                    <option value="">Select category</option>
-                    <option value="TV">Home</option>
-                    <option value="PC">Work</option>
-                    <option value="GA">Goals</option>
-                    <option value="PH">Personal</option>
+                    <option value="">Personal</option>
+                    <option value="">Home</option>
+                    <option value="">Work</option>
+                    <option value="">Goals</option>
+                    <option value="">Education</option>
+                    <option value="">Finance</option>
+                    <option value="">Recipes</option>
+                    <option value="">Health and Fitness</option>
                   </select>
                 </div>
                 <div className="sm:col-span-2">

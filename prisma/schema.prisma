@@ -10,18 +10,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum categoryEnum {
-  Personal
-  Work
-  Home
-  Goal
-}
-
 model Note {
-  id        String       @id @default(cuid())
+  id        String   @id @default(cuid())
   title     String
-  category  categoryEnum
+  category  String
   content   String
-  createdAt DateTime
-  updatedAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
