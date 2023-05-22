@@ -1,6 +1,5 @@
 import { FaSearch, FaBars } from "react-icons/fa";
-import { HiOutlineShoppingCart } from "react-icons/hi";
-import { BsMoonStarsFill, BsSunFill } from "react-icons/bs";
+import { BsMoonStarsFill } from "react-icons/bs";
 import Link from "next/link";
 
 export default function Navbar() {

@@ -5,7 +5,6 @@ export default function Note() {
   return (
     <>
       <div className="p-4 lg:w-1/4">
-        {" "}
         <div className="relative h-full overflow-hidden rounded-lg border border-gray-400 bg-gray-100 bg-opacity-75 px-8 pb-12 pt-8 text-center">
           <h2 className="title-font mb-1text-sm font-medium tracking-widest text-gray-500">
             CATEGORY
