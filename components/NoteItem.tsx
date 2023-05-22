@@ -1,7 +1,7 @@
 import { HiArrowRight, HiOutlineEye } from "react-icons/hi";
 import { BiComment } from "react-icons/bi";
 
-export default function Note() {
+export default function NoteItem() {
   return (
     <>
       <div className="p-4 lg:w-1/4">

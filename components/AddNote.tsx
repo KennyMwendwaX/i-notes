@@ -12,7 +12,7 @@ export default function AddNote() {
     <>
       <button
         onClick={handleModalToggle}
-        className="mb-4 flex items-center rounded-lg border border-gray-400 bg-transparent px-5 py-2.5 text-sm font-medium text-gray-700 hover:border-blue-700 hover:bg-blue-700 hover:text-gray-100 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-200">
+        className="mb-4 flex items-center rounded-lg border border-gray-400 bg-transparent px-5 py-2.5 text-sm font-medium text-gray-700 hover:border-gray-800 hover:bg-gray-800 hover:text-gray-100 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-200">
         <HiPlus className="mr-1 h-5 w-5" />
         Add Note
       </button>
@@ -89,7 +89,7 @@ export default function AddNote() {
               </div>
               <button
                 type="submit"
-                className="inline-flex items-center rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300">
+                className="inline-flex items-center rounded-lg bg-gray-800 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300">
                 <HiPlus className="mr-1 h-5 w-5" />
                 Add new note
               </button>
