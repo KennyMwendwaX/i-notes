@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaEdit, FaRegTrashAlt } from "react-icons/fa";
 import { HiOutlineClock, HiPlus } from "react-icons/hi";
 import { MdClose } from "react-icons/md";
 
@@ -54,12 +55,26 @@ export default function Note() {
                 <p className="ml-2">7 Sept, 23:00</p>
               </span>
             </div>
-            <p className="p-3 text-gray-600">
+            <p className="border-b border-gray-200 p-3 text-gray-600">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta
               magnam reprehenderit, inventore rem consequuntur ratione totam
               dolore expedita quo iste culpa, sunt corporis ullam officia id
               quibusdam cupiditate quod earum.
             </p>
+            <div className="flex items-center space-x-4">
+              <button
+                type="button"
+                className="inline-flex items-center rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300">
+                <FaEdit className="-ml-1 mr-1 h-4 w-4" />
+                Edit
+              </button>
+              <button
+                type="button"
+                className="inline-flex items-center rounded-lg bg-red-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300">
+                <FaRegTrashAlt className="-ml-1 mr-1.5 h-4 w-4" />
+                Delete
+              </button>
+            </div>
           </div>
         </div>
       )}
