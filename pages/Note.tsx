@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { HiPlus } from "react-icons/hi";
+import { HiOutlineClock, HiPlus } from "react-icons/hi";
 import { MdClose } from "react-icons/md";
 
 export default function Note() {
@@ -27,10 +27,8 @@ export default function Note() {
           {/* Modal content */}
           <div className="relative w-full max-w-2xl rounded-lg bg-white p-4 shadow sm:p-5">
             {/* Modal header */}
-            <div className="mb-4 flex items-center justify-between rounded-t border-b pb-4 sm:mb-5">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
-                Note
-              </h2>
+            <div className="mb-4 flex items-center justify-between rounded-t border-b pb-3 sm:mb-5">
+              <h2 className="text-xl font-semibold text-gray-900">Note</h2>
               <button
                 type="button"
                 onClick={handleModalToggle}
@@ -44,9 +42,24 @@ export default function Note() {
             <h1 className="title-font mb-3 text-xl font-bold text-gray-900 sm:text-2xl">
               Raclette Blueberry Nextious Level
             </h1>
-            <span className="inline-block rounded bg-indigo-100 px-2 py-1 text-sm font-medium tracking-widest text-indigo-600">
-              CATEGORY
-            </span>
+            <div className="flex items-center justify-between border-b border-gray-200 pb-4">
+              <span className="inline-block rounded bg-indigo-100 px-2 py-1 text-sm font-medium tracking-widest text-indigo-600">
+                CATEGORY
+              </span>
+              <span
+                aria-label="time"
+                role="contentinfo"
+                className="flex items-center rounded-full border border-gray-800 px-3 py-1 text-sm text-gray-800 dark:border-gray-700 dark:text-gray-400">
+                <HiOutlineClock />
+                <p className="ml-2">7 Sept, 23:00</p>
+              </span>
+            </div>
+            <p className="p-3 text-gray-600">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta
+              magnam reprehenderit, inventore rem consequuntur ratione totam
+              dolore expedita quo iste culpa, sunt corporis ullam officia id
+              quibusdam cupiditate quod earum.
+            </p>
           </div>
         </div>
       )}

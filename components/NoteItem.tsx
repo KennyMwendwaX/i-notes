@@ -1,11 +1,11 @@
-import { HiArrowRight, HiOutlineEye } from "react-icons/hi";
+import { HiArrowRight, HiOutlineClock, HiOutlineEye } from "react-icons/hi";
 import { BiComment } from "react-icons/bi";
 
 export default function NoteItem() {
   return (
     <>
       <div className="p-4 lg:w-1/4">
-        <div className="relative h-full overflow-hidden rounded-lg border border-gray-400 bg-gray-100 bg-opacity-75 px-8 pb-12 pt-8 text-center">
+        <div className="relative h-full overflow-hidden rounded-lg border border-gray-400 bg-gray-100 bg-opacity-75 px-8 pb-10 pt-8">
           <h2 className="title-font mb-1text-sm font-medium tracking-widest text-gray-500">
             CATEGORY
           </h2>
@@ -16,19 +16,13 @@ export default function NoteItem() {
             Photo booth fam kinfolk cold-pressed sriracha leggings jianbing
             microdosing tousled waistcoat.
           </p>
-          <a className="inline-flex cursor-pointer items-center text-indigo-500 hover:underline">
+          <div className="inline-flex cursor-pointer items-center text-indigo-500 hover:underline">
             Read More
             <HiArrowRight className="ml-2 h-4 w-4" />
-          </a>
-          <div className="absolute bottom-0 left-0 mt-2 flex w-full justify-center py-4 text-center leading-none">
-            <span className="mr-3 inline-flex items-center border-r-2 border-gray-400 py-1 pr-3 text-sm leading-none text-gray-500">
-              <HiOutlineEye className="mr-1 h-5 w-5" />
-              1.2K
-            </span>
-            <span className="inline-flex items-center text-sm leading-none text-gray-500">
-              <BiComment className="mr-1 h-4 w-4" />6
-            </span>
           </div>
+          <span className="mr-2 mt-2 inline-flex items-center rounded border border-gray-500 bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800 dark:bg-gray-700 dark:text-gray-400">
+            <HiOutlineClock className="mr-1 h-4 w-4" />3 days ago
+          </span>
         </div>
       </div>
     </>

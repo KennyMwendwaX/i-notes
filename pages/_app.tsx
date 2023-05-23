@@ -1,9 +1,9 @@
 import Navbar from "@/components/Navbar";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { Roboto } from "next/font/google";
+import { Poppins } from "next/font/google";
 
-const roboto = Roboto({
+const poppins = Poppins({
   weight: ["400"],
   subsets: ["latin"],
 });
@@ -11,7 +11,7 @@ const roboto = Roboto({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <main className={roboto.className}>
+      <main className={poppins.className}>
         <div className="min-h-screen bg-gray-100">
           <Navbar />
           <Component {...pageProps} />
