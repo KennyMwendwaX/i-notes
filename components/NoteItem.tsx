@@ -1,7 +1,11 @@
-import { HiArrowRight, HiOutlineClock, HiOutlineEye } from "react-icons/hi";
-import { BiComment } from "react-icons/bi";
+import { MouseEventHandler } from "react";
+import { HiArrowRight, HiOutlineClock } from "react-icons/hi";
 
-export default function NoteItem() {
+interface NoteItemProps {
+  handleModalToggle: () => void;
+}
+
+export default function NoteItem({ handleModalToggle }: NoteItemProps) {
   return (
     <>
       <div className="p-4 lg:w-1/4">
@@ -16,7 +20,9 @@ export default function NoteItem() {
             Photo booth fam kinfolk cold-pressed sriracha leggings jianbing
             microdosing tousled waistcoat.
           </p>
-          <div className="inline-flex cursor-pointer items-center text-indigo-500 hover:underline">
+          <div
+            onClick={handleModalToggle}
+            className="inline-flex cursor-pointer items-center text-indigo-500 hover:underline">
             Read More
             <HiArrowRight className="ml-2 h-4 w-4" />
           </div>

@@ -1,13 +1,37 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { HiPlus } from "react-icons/hi";
 import { MdClose } from "react-icons/md";
+
+type FormValues = {
+  title: string;
+  category: string;
+  description: string;
+};
 
 export default function AddNote() {
   const [showModal, setShowModal] = useState(false);
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>();
+
   const handleModalToggle = () => {
     setShowModal(!showModal);
   };
+
+  async function onSubmit(values: FormValues) {
+    const options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values),
+    };
+
+    const register = await fetch("http://localhost:3000/api/register", options);
+  }
+
   return (
     <>
       <button
@@ -41,7 +65,7 @@ export default function AddNote() {
               </button>
             </div>
             {/* Modal body */}
-            <form action="#">
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="mb-4">
                 <div className="mb-3">
                   <label
@@ -51,11 +75,11 @@ export default function AddNote() {
                   </label>
                   <input
                     type="text"
-                    name="name"
-                    id="name"
+                    id="title"
                     className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-blue-600"
                     placeholder="Type note title"
                     required
+                    {...register("title")}
                   />
                 </div>
                 <div className="mb-3">
@@ -66,7 +90,8 @@ export default function AddNote() {
                   </label>
                   <select
                     id="category"
-                    className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-blue-500">
+                    className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+                    {...register("category")}>
                     <option value="Personal">Personal</option>
                     <option value="Home">Home</option>
                     <option value="Work">Work</option>
@@ -89,7 +114,8 @@ export default function AddNote() {
                     id="description"
                     rows={4}
                     className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-blue-500"
-                    placeholder="Write your note here"></textarea>
+                    placeholder="Write your note here"
+                    {...register("description")}></textarea>
                 </div>
               </div>
               <button
