@@ -12,8 +12,10 @@ type Note = {
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
+  const [selectedNote, setSelectedNote] = useState<Note | null>(null);
 
-  const handleModalToggle = () => {
+  const handleModalToggle = (note: Note) => {
+    setSelectedNote(note);
     setShowModal(!showModal);
   };
 
@@ -46,7 +48,9 @@ export default function Home() {
             />
           ))}
         </div>
-        {showModal && <Note handleModalToggle={handleModalToggle} />}
+        {selectedNote && showModal && (
+          <Note note={selectedNote} handleModalToggle={handleModalToggle} />
+        )}
       </div>
     </>
   );

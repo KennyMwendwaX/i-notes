@@ -9,7 +9,7 @@ interface Note {
 
 interface NoteItemProps {
   note: Note;
-  handleModalToggle: () => void;
+  handleModalToggle: (note: Note) => void;
 }
 
 export default function NoteItem({ note, handleModalToggle }: NoteItemProps) {
@@ -27,7 +27,7 @@ export default function NoteItem({ note, handleModalToggle }: NoteItemProps) {
             {note.content}
           </p>
           <div
-            onClick={handleModalToggle}
+            onClick={() => handleModalToggle(note)}
             className="inline-flex cursor-pointer items-center text-indigo-500 hover:underline">
             Read More
             <HiArrowRight className="ml-2 h-4 w-4" />

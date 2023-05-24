@@ -2,11 +2,19 @@ import { FaEdit, FaRegTrashAlt } from "react-icons/fa";
 import { HiOutlineClock } from "react-icons/hi";
 import { MdClose } from "react-icons/md";
 
-interface NoteProps {
-  handleModalToggle: () => void;
+interface Note {
+  id: string;
+  title: string;
+  category: string;
+  content: string;
 }
 
-export default function Note({ handleModalToggle }: NoteProps) {
+interface NoteProps {
+  note: Note;
+  handleModalToggle: (note: Note) => void;
+}
+
+export default function Note({ note, handleModalToggle }: NoteProps) {
   return (
     <div className="container mx-auto mb-2 px-5 py-20">
       {/* Modal */}
@@ -22,7 +30,7 @@ export default function Note({ handleModalToggle }: NoteProps) {
             <h2 className="text-xl font-semibold text-gray-900">Note</h2>
             <button
               type="button"
-              onClick={handleModalToggle}
+              onClick={() => handleModalToggle(note)}
               className="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900"
               data-modal-toggle="defaultModal">
               <MdClose className="h-6 w-6" />
@@ -31,11 +39,11 @@ export default function Note({ handleModalToggle }: NoteProps) {
           </div>
           {/* Modal body */}
           <h1 className="title-font mb-3 text-xl font-bold text-gray-900 sm:text-2xl">
-            Raclette Blueberry Nextious Level
+            {note.title}
           </h1>
           <div className="flex items-center justify-between border-b border-gray-200 pb-4">
             <span className="inline-block rounded bg-indigo-100 px-2 py-1 text-sm font-medium tracking-widest text-indigo-600">
-              CATEGORY
+              {note.category}
             </span>
             <span
               aria-label="time"
@@ -46,21 +54,18 @@ export default function Note({ handleModalToggle }: NoteProps) {
             </span>
           </div>
           <p className="border-b border-gray-200 p-3 text-gray-600">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta
-            magnam reprehenderit, inventore rem consequuntur ratione totam
-            dolore expedita quo iste culpa, sunt corporis ullam officia id
-            quibusdam cupiditate quod earum.
+            {note.content}
           </p>
           <div className="flex items-center space-x-4 p-3">
             <button
               type="button"
-              className="inline-flex items-center rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300">
+              className="inline-flex items-center rounded-lg border border-blue-700 bg-transparent px-5 py-2.5 text-center text-sm font-medium text-blue-700 hover:bg-blue-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300">
               <FaEdit className="-ml-1 mr-1 h-4 w-4" />
               Edit
             </button>
             <button
               type="button"
-              className="inline-flex items-center rounded-lg bg-red-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300">
+              className="inline-flex items-center rounded-lg border border-red-600 bg-transparent px-5 py-2.5 text-center text-sm font-medium text-red-700 hover:bg-red-700 hover:text-white focus:outline-none focus:ring-4 focus:ring-red-300">
               <FaRegTrashAlt className="-ml-1 mr-1.5 h-4 w-4" />
               Delete
             </button>

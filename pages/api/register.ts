@@ -16,7 +16,6 @@ export default async function handler(
 
   try {
     // Create a new note
-
     const note = await prisma.note.create({
       data: {
         title: title,
