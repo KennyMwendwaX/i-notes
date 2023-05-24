@@ -1,16 +1,19 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 import { HiPlus } from "react-icons/hi";
 import { MdClose } from "react-icons/md";
 
 type FormValues = {
   title: string;
   category: string;
-  description: string;
+  content: string;
 };
 
 export default function AddNote() {
   const [showModal, setShowModal] = useState(false);
+
+  const router = useRouter();
 
   const {
     register,
@@ -29,7 +32,9 @@ export default function AddNote() {
       body: JSON.stringify(values),
     };
 
-    const register = await fetch("http://localhost:3000/api/register", options);
+    const res = await fetch("http://localhost:3000/api/register", options);
+
+    if (res.status === 201) return router.reload();
   }
 
   return (
@@ -108,14 +113,14 @@ export default function AddNote() {
                   <label
                     htmlFor="body"
                     className="mb-2 block text-sm font-medium text-gray-900">
-                    Description
+                    Note Content
                   </label>
                   <textarea
-                    id="description"
+                    id="content"
                     rows={4}
                     className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-blue-500"
-                    placeholder="Write your note here"
-                    {...register("description")}></textarea>
+                    placeholder="Write your note content here"
+                    {...register("content")}></textarea>
                 </div>
               </div>
               <button
