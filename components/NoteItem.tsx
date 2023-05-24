@@ -1,4 +1,3 @@
-import { MouseEventHandler } from "react";
 import { HiArrowRight, HiOutlineClock } from "react-icons/hi";
 
 interface Note {

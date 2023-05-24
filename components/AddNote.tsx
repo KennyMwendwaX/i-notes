@@ -10,7 +10,11 @@ type FormValues = {
   content: string;
 };
 
-export default function AddNote() {
+type AddNoteProps = {
+  fetchNotes: () => void;
+};
+
+export default function AddNote({ fetchNotes }: AddNoteProps) {
   const [showModal, setShowModal] = useState(false);
 
   const router = useRouter();
@@ -34,7 +38,10 @@ export default function AddNote() {
 
     const res = await fetch("http://localhost:3000/api/register", options);
 
-    if (res.status === 201) return setShowModal(false);
+    if (res.status === 201) {
+      setShowModal(false);
+      fetchNotes(); // Trigger refetch of notes
+    }
   }
 
   return (
