@@ -34,7 +34,7 @@ export default function AddNote() {
 
     const res = await fetch("http://localhost:3000/api/register", options);
 
-    if (res.status === 201) return router.reload();
+    if (res.status === 201) return setShowModal(false);
   }
 
   return (

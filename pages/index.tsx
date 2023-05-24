@@ -1,7 +1,14 @@
 import AddNote from "@/components/AddNote";
 import Note from "@/components/Note";
 import NoteItem from "@/components/NoteItem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+type Note = {
+  id: string;
+  title: string;
+  category: string;
+  content: string;
+};
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
@@ -9,18 +16,35 @@ export default function Home() {
   const handleModalToggle = () => {
     setShowModal(!showModal);
   };
+
+  const [notes, setNotes] = useState<Note[]>([]);
+
+  useEffect(() => {
+    const fetchNotes = async () => {
+      try {
+        const response = await fetch("/api/notes");
+        const data = await response.json();
+        setNotes(data);
+      } catch (error) {
+        console.error("Error fetching notes:", error);
+      }
+    };
+
+    fetchNotes();
+  }, []);
+
   return (
     <>
       <div className="container mx-auto mb-2 px-5 py-20">
         <AddNote />
         <div className="-m-4 flex flex-wrap">
-          <NoteItem handleModalToggle={handleModalToggle} />
-          <NoteItem handleModalToggle={handleModalToggle} />
-          <NoteItem handleModalToggle={handleModalToggle} />
-          <NoteItem handleModalToggle={handleModalToggle} />
-          <NoteItem handleModalToggle={handleModalToggle} />
-          <NoteItem handleModalToggle={handleModalToggle} />
-          <NoteItem handleModalToggle={handleModalToggle} />
+          {notes.map((note) => (
+            <NoteItem
+              key={note.id}
+              note={note}
+              handleModalToggle={handleModalToggle}
+            />
+          ))}
         </div>
         {showModal && <Note handleModalToggle={handleModalToggle} />}
       </div>
