@@ -12,9 +12,19 @@ interface Note {
 interface NoteProps {
   note: Note;
   handleModalToggle: (note: Note) => void;
+  handleDeleteNote: (id: string) => void;
 }
 
-export default function Note({ note, handleModalToggle }: NoteProps) {
+export default function Note({
+  note,
+  handleModalToggle,
+  handleDeleteNote,
+}: NoteProps) {
+  const deleteNote = () => {
+    handleDeleteNote(note.id);
+    handleModalToggle(note);
+  };
+
   return (
     <div className="container mx-auto mb-2 px-5 py-20">
       {/* Modal */}
@@ -65,6 +75,7 @@ export default function Note({ note, handleModalToggle }: NoteProps) {
             </button>
             <button
               type="button"
+              onClick={deleteNote}
               className="inline-flex items-center rounded-lg border border-red-600 bg-transparent px-5 py-2.5 text-center text-sm font-medium text-red-700 hover:bg-red-700 hover:text-white focus:outline-none focus:ring-4 focus:ring-red-300">
               <FaRegTrashAlt className="-ml-1 mr-1.5 h-4 w-4" />
               Delete

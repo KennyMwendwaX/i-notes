@@ -35,6 +35,17 @@ export default function Home() {
     fetchNotes();
   }, [notes]);
 
+  const handleDeleteNote = async (id: string) => {
+    try {
+      await fetch(`/api/delete/${id}`, {
+        method: "DELETE",
+      });
+      fetchNotes(); // Fetch the updated list of notes after deletion
+    } catch (error) {
+      console.error("Error deleting note:", error);
+    }
+  };
+
   return (
     <>
       <div className="container mx-auto mb-2 px-5 py-20">
@@ -49,7 +60,11 @@ export default function Home() {
           ))}
         </div>
         {selectedNote && showModal && (
-          <Note note={selectedNote} handleModalToggle={handleModalToggle} />
+          <Note
+            note={selectedNote}
+            handleModalToggle={handleModalToggle}
+            handleDeleteNote={handleDeleteNote}
+          />
         )}
       </div>
     </>
