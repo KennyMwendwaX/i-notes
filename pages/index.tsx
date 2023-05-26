@@ -51,13 +51,19 @@ export default function Home() {
       <div className="container mx-auto mb-2 px-5 py-20">
         <AddNote fetchNotes={fetchNotes} />
         <div className="-m-4 flex flex-wrap">
-          {notes.map((note) => (
-            <NoteItem
-              key={note.id}
-              note={note}
-              handleModalToggle={handleModalToggle}
-            />
-          ))}
+          {notes.length > 0 ? (
+            notes.map((note) => (
+              <NoteItem
+                key={note.id}
+                note={note}
+                handleModalToggle={handleModalToggle}
+              />
+            ))
+          ) : (
+            <div className="ml-4 pt-2">
+              No notes available, click the Add Notes button to add a note.
+            </div>
+          )}
         </div>
         {selectedNote && showModal && (
           <Note
