@@ -5,22 +5,26 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method !== "DELETE")
+  if (req.method !== "PUT")
     return res.status(405).json({ message: "Method Not Allowed" });
 
   const { id } = req.query;
+  const { title, category, content } = req.body;
 
   try {
-    // Delete the note from the database
-    const deletedNote = await prisma.note.delete({
-      where: {
-        id: String(id),
+    // Update the note in the database
+    const updatedNote = await prisma.note.update({
+      where: { id: String(id) },
+      data: {
+        title,
+        category,
+        content,
       },
     });
 
-    if (deletedNote) return res.status(200).json({ message: "Note deleted" });
+    if (updatedNote) return res.status(200).json({ message: "Note Updated" });
   } catch (error) {
-    console.error("Error deleting note:", error);
+    console.error("Error updating note:", error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 }
