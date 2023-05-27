@@ -17,8 +17,11 @@
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
     "autoprefixer": "10.4.14",
+    "dompurify": "^3.0.3",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.3",
+    "jsdom": "^22.0.0",
+    "marked": "^5.0.3",
     "next": "13.4.3",
     "postcss": "8.4.23",
     "prisma": "^4.14.1",
@@ -30,6 +33,9 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@types/dompurify": "^3.0.2",
+    "@types/jsdom": "^21.1.1",
+    "@types/marked": "^5.0.0",
     "prettier-plugin-tailwindcss": "^0.3.0",
     "react-icons": "^4.8.0",
     "tailwind-scrollbar": "^3.0.4"
