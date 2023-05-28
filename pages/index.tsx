@@ -1,6 +1,7 @@
 import AddNote from "@/components/AddNote";
 import Note from "@/components/Note";
 import NoteItem from "@/components/NoteItem";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { useEffect, useState } from "react";
 
 type Note = {

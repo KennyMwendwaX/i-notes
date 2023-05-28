@@ -63,9 +63,9 @@ export default function Note({
               <p className="ml-2">7 Sept, 23:00</p>
             </span>
           </div>
-          <p className="border-b border-gray-200 p-3 text-gray-600">
+          <div className="border-b border-gray-200 p-3 text-gray-600">
             {note.content}
-          </p>
+          </div>
           <div className="flex items-center space-x-4 p-3">
             <button
               type="button"

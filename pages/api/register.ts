@@ -1,8 +1,6 @@
 import { prisma } from "@/utils/db";
 import { NextApiRequest, NextApiResponse } from "next";
-import { marked } from "marked";
-import { JSDOM } from "jsdom";
-import DOMPurify from "dompurify";
+
 
 type Data = {
   message: string;
@@ -17,18 +15,13 @@ export default async function handler(
 
   const { title, category, content } = req.body;
 
-  const purify = DOMPurify(new JSDOM("").window);
-
-  // Sanitize the markdown converted to HTML
-  const sanitizedHTML = purify.sanitize(marked(content));
-
   try {
     // Create a new note
     const note = await prisma.note.create({
       data: {
         title: title,
         category: category,
-        content: sanitizedHTML,
+        content: content,
       },
     });
 
