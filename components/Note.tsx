@@ -1,3 +1,4 @@
+import { formatDateTime } from "@/utils/DateTime";
 import { FaEdit, FaRegTrashAlt } from "react-icons/fa";
 import { HiOutlineClock } from "react-icons/hi";
 import { MdClose } from "react-icons/md";
@@ -7,6 +8,7 @@ interface Note {
   title: string;
   category: string;
   content: string;
+  createdAt: number;
 }
 
 interface NoteProps {
@@ -60,7 +62,7 @@ export default function Note({
               role="contentinfo"
               className="flex items-center rounded-full border border-gray-800 px-3 py-1 text-sm text-gray-800 dark:border-gray-700 dark:text-gray-400">
               <HiOutlineClock />
-              <p className="ml-2">7 Sept, 23:00</p>
+              <p className="ml-2">{formatDateTime(note.createdAt)}</p>
             </span>
           </div>
           <div className="border-b border-gray-200 p-3 text-gray-600">

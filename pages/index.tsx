@@ -3,12 +3,13 @@ import Note from "@/components/Note";
 import NoteItem from "@/components/NoteItem";
 import { useEffect, useState } from "react";
 
-type Note = {
+interface Note {
   id: string;
   title: string;
   category: string;
   content: string;
-};
+  createdAt: string;
+}
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);

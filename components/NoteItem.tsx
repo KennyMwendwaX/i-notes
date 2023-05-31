@@ -1,3 +1,4 @@
+import { getTimeAgo } from "@/utils/DateTime";
 import { HiArrowRight, HiOutlineClock } from "react-icons/hi";
 
 interface Note {
@@ -5,6 +6,7 @@ interface Note {
   title: string;
   category: string;
   content: string;
+  createdAt: number;
 }
 
 interface NoteItemProps {
@@ -33,7 +35,8 @@ export default function NoteItem({ note, handleModalToggle }: NoteItemProps) {
             <HiArrowRight className="ml-2 h-4 w-4" />
           </div>
           <span className="mr-2 mt-2 inline-flex items-center rounded border border-gray-500 bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800 dark:bg-gray-700 dark:text-gray-400">
-            <HiOutlineClock className="mr-1 h-4 w-4" />3 days ago
+            <HiOutlineClock className="mr-1 h-4 w-4" />
+            {getTimeAgo(note.createdAt)}
           </span>
         </div>
       </div>
