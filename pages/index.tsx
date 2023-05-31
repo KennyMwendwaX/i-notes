@@ -8,7 +8,7 @@ interface Note {
   title: string;
   category: string;
   content: string;
-  createdAt: string;
+  createdAt: number;
 }
 
 export default function Home() {
