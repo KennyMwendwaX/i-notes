@@ -5,6 +5,7 @@ import {
   $getSelection,
   $isRangeSelection,
   EditorState,
+  ParagraphNode,
 } from "lexical";
 
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
@@ -22,13 +23,10 @@ const theme = {
   // Theme styling goes here
   heading: {
     h1: "text-2xl text-green-700",
-    h2: "editor-heading-h2",
-    h3: "editor-heading-h3",
-    h4: "editor-heading-h4",
-    h5: "editor-heading-h5",
-    h6: "editor-heading-h6",
+    h2: "text-xl text-red-700",
+    h3: "text-lg text-yellow-600",
   },
-  paragraph: "text-lg text-indigo-700",
+  paragraph: "text-base text-indigo-700",
   text: {
     bold: "font-bold text-green-600",
     italic: "font-italic",
@@ -62,18 +60,37 @@ function onError(error: Error) {
   console.log(error);
 }
 
+type HeadingTagType = "h1" | "h2" | "h3";
+
 function MyHeadingPlugin(): JSX.Element {
   const [editor] = useLexicalComposerContext();
-  // const onClick: MouseEventHandler<HTMLButtonElement> = (e) => {
-  //   editor.update(() => {
-  //     const selection = $getSelection();
-  //     if ($isRangeSelection(selection)) {
-  //       $setBlocksType(selection, () => $createHeadingNode("h1"));
-  //     }
-  //   });
-  // };
+  const onClick = (tag: "h1" | "h2" | "h3"): void => {
+    editor.update(() => {
+      const selection = $getSelection();
+      if ($isRangeSelection(selection)) {
+        $setBlocksType(selection, () => $createHeadingNode(tag));
+      }
+    });
+  };
+
+  return (
+    <div className="space-x-2">
+      {["h1", "h2", "h3"].map((tag) => (
+        <button
+          className="rounded-lg bg-blue-600 px-3 py-2 text-white"
+          onClick={() => onClick(tag as HeadingTagType)}
+          key={tag}>
+          {tag.toUpperCase()}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function MyHelloPlugin(): JSX.Element {
+  const [editor] = useLexicalComposerContext();
+
   const onClick: MouseEventHandler<HTMLButtonElement> = (e) => {
-    e.preventDefault();
     editor.update(() => {
       // Get the RootNode from the EditorState
       const root = $getRoot();
@@ -95,7 +112,7 @@ function MyHeadingPlugin(): JSX.Element {
     });
   };
 
-  return <button onClick={onClick}>Heading</button>;
+  return <button onClick={onClick}>Paragraph</button>;
 }
 
 export default function Test() {
@@ -103,13 +120,14 @@ export default function Test() {
     namespace: "MyEditor",
     theme,
     onError,
-    node: [HeadingNode],
+    nodes: [HeadingNode, ParagraphNode],
   };
   return (
     <>
       <div className="container mx-auto mb-2 px-5 py-20">
         <LexicalComposer initialConfig={initialConfig}>
           <MyHeadingPlugin />
+          <MyHelloPlugin />
           <RichTextPlugin
             contentEditable={
               <ContentEditable className="block h-96 w-3/5 rounded-lg border-0 bg-white p-3 text-sm text-gray-800 outline-none focus:ring-0 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400" />
