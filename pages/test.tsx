@@ -87,33 +87,6 @@ function MyHeadingPlugin(): JSX.Element {
   );
 }
 
-function MyHelloPlugin(): JSX.Element {
-  const [editor] = useLexicalComposerContext();
-
-  const onClick: MouseEventHandler<HTMLButtonElement> = (e) => {
-    editor.update(() => {
-      // Get the RootNode from the EditorState
-      const root = $getRoot();
-
-      // Get the selection from the EditorState
-      const selection = $getSelection();
-
-      // Create a new ParagraphNode
-      const paragraphNode = $createParagraphNode();
-
-      // Create a new TextNode
-      const textNode = $createTextNode("Hello world");
-
-      // Append the text node to the paragraph
-      paragraphNode.append(textNode);
-
-      // Finally, append the paragraph to the root
-      root.append(paragraphNode);
-    });
-  };
-
-  return <button onClick={onClick}>Paragraph</button>;
-}
 
 export default function Test() {
   const initialConfig = {
@@ -127,13 +100,12 @@ export default function Test() {
       <div className="container mx-auto mb-2 px-5 py-20">
         <LexicalComposer initialConfig={initialConfig}>
           <MyHeadingPlugin />
-          <MyHelloPlugin />
           <RichTextPlugin
             contentEditable={
               <ContentEditable className="block h-96 w-3/5 rounded-lg border-0 bg-white p-3 text-sm text-gray-800 outline-none focus:ring-0 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400" />
             }
             placeholder={
-              <div className="absolute top-[115px] px-3">
+              <div className="absolute top-[132px] px-3">
                 Enter some text...
               </div>
             }
