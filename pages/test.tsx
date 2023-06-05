@@ -1,4 +1,4 @@
-import { EditorState, ParagraphNode } from "lexical";
+import { EditorState } from "lexical";
 
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
@@ -8,10 +8,9 @@ import { ListPlugin } from "@lexical/react/LexicalListPlugin";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
-import { HeadingNode } from "@lexical/rich-text";
-import { ListNode, ListItemNode } from "@lexical/list";
 import { useEffect } from "react";
 import ToolbarPlugin from "@/components/Toolbar";
+import { editorNodes } from "@/utils/editorNodes";
 
 const theme = {
   // Theme styling goes here
@@ -59,14 +58,13 @@ export default function Test() {
     namespace: "MyEditor",
     theme,
     onError,
-    nodes: [HeadingNode, ParagraphNode, ListNode, ListItemNode],
+    nodes: [...editorNodes],
   };
   return (
     <>
       <div className="container mx-auto mb-2 px-5 py-20">
         <LexicalComposer initialConfig={initialConfig}>
           <ToolbarPlugin />
-          <ListPlugin />
           <RichTextPlugin
             contentEditable={
               <ContentEditable className="block h-96 w-3/5 rounded-lg border-0 bg-white p-3 text-sm text-gray-800 outline-none focus:ring-0 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400" />
@@ -84,6 +82,7 @@ export default function Test() {
             }}
           />
           <HistoryPlugin />
+          <ListPlugin />
         </LexicalComposer>
       </div>
     </>
