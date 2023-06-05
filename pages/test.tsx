@@ -8,10 +8,14 @@ import { ListPlugin } from "@lexical/react/LexicalListPlugin";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
-import { HeadingNode } from "@lexical/rich-text";
+import { HeadingNode, QuoteNode } from "@lexical/rich-text";
 import { ListNode, ListItemNode } from "@lexical/list";
 import { useEffect } from "react";
 import ToolbarPlugin from "@/components/Toolbar";
+
+import { CodeHighlightNode, CodeNode } from "@lexical/code";
+import { HashtagNode } from "@lexical/hashtag";
+import { AutoLinkNode, LinkNode } from "@lexical/link";
 
 const theme = {
   // Theme styling goes here
@@ -59,7 +63,18 @@ export default function Test() {
     namespace: "MyEditor",
     theme,
     onError,
-    nodes: [HeadingNode, ParagraphNode, ListNode, ListItemNode],
+    nodes: [
+      HeadingNode,
+      ParagraphNode,
+      ListNode,
+      ListItemNode,
+      QuoteNode,
+      CodeNode,
+      HashtagNode,
+      CodeHighlightNode,
+      AutoLinkNode,
+      LinkNode,
+    ],
   };
   return (
     <>
