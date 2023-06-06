@@ -28,7 +28,7 @@ export default function Note({
   handleDeleteNote,
 }: NoteProps) {
   const updateNote = () => {
-    handleNoteModalToggle;
+    handleNoteModalToggle(note);
     setShowEditModal(!showEditModal);
   };
 
