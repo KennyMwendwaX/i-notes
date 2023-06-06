@@ -1,17 +1,7 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { MdClose } from "react-icons/md";
-import { TbBlockquote } from "react-icons/tb";
-import {
-  FaBold,
-  FaCode,
-  FaHeading,
-  FaItalic,
-  FaLink,
-  FaListOl,
-  FaListUl,
-  FaSave,
-} from "react-icons/fa";
+import { BsSave } from "react-icons/bs";
 
 interface FormValues {
   id: string;
@@ -152,7 +142,7 @@ export default function EditNote({
               <button
                 type="submit"
                 className="inline-flex items-center rounded-lg bg-gray-800 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300">
-                <FaSave className="mr-1 h-5 w-5" />
+                <BsSave className="mr-1 h-5 w-5" />
                 Add new note
               </button>
             </form>

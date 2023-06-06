@@ -28,7 +28,12 @@ export default function Home() {
     try {
       const response = await fetch("/api/notes");
       const data = await response.json();
-      setNotes(data);
+      // Sort notes by createdAt in descending order
+      const sortedNotes: Note[] = data.sort(
+        (a: Note, b: Note) =>
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      );
+      setNotes(sortedNotes);
     } catch (error) {
       console.error("Error fetching notes:", error);
     }
