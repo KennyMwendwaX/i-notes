@@ -1,4 +1,5 @@
 import AddNote from "@/components/AddNote";
+import EditNote from "@/components/EditNote";
 import Note from "@/components/Note";
 import NoteItem from "@/components/NoteItem";
 import { useEffect, useState } from "react";
@@ -14,8 +15,9 @@ interface Note {
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
   const [selectedNote, setSelectedNote] = useState<Note | null>(null);
+  const [showEditModal, setShowEditModal] = useState(false);
 
-  const handleModalToggle = (note: Note) => {
+  const handleNoteModalToggle = (note: Note) => {
     setSelectedNote(note);
     setShowModal(!showModal);
   };
@@ -57,7 +59,7 @@ export default function Home() {
               <NoteItem
                 key={note.id}
                 note={note}
-                handleModalToggle={handleModalToggle}
+                handleNoteModalToggle={handleNoteModalToggle}
               />
             ))
           ) : (
@@ -66,11 +68,21 @@ export default function Home() {
             </div>
           )}
         </div>
-        {selectedNote && showModal && (
+        {selectedNote && showModal === true && (
           <Note
             note={selectedNote}
-            handleModalToggle={handleModalToggle}
+            handleNoteModalToggle={handleNoteModalToggle}
+            showEditModal={showEditModal}
+            setShowEditModal={setShowEditModal}
             handleDeleteNote={handleDeleteNote}
+          />
+        )}
+        {selectedNote && showEditModal === true && (
+          <EditNote
+            fetchNotes={fetchNotes}
+            showEditModal={showEditModal}
+            setShowEditModal={setShowEditModal}
+            note={selectedNote}
           />
         )}
       </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { useForm } from "react-hook-form";
 import { HiEmojiHappy, HiPlus } from "react-icons/hi";
 import { MdClose } from "react-icons/md";
@@ -11,57 +11,58 @@ import {
   FaLink,
   FaListOl,
   FaListUl,
+  FaSave,
 } from "react-icons/fa";
 
-type FormValues = {
+interface FormValues {
+  id: string;
   title: string;
   category: string;
   content: string;
-};
+}
 
-type AddNoteProps = {
+type EditNoteProps = {
+  note: FormValues;
+  showEditModal: boolean;
+  setShowEditModal: Dispatch<SetStateAction<boolean>>;
   fetchNotes: () => void;
 };
 
-export default function AddNote({ fetchNotes }: AddNoteProps) {
-  const [showModal, setShowModal] = useState(false);
-
+export default function EditNote({
+  note,
+  fetchNotes,
+  showEditModal,
+  setShowEditModal,
+}: EditNoteProps) {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
 
-  const handleModalToggle = () => {
-    setShowModal(!showModal);
+  const handleEditModalToggle = () => {
+    setShowEditModal(!showEditModal);
   };
 
   async function onSubmit(values: FormValues) {
     const options = {
-      method: "POST",
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
     };
 
-    const res = await fetch("/api/register", options);
+    const res = await fetch(`api/update/${note.id}`, options);
 
     if (res.status === 201) {
-      setShowModal(false);
+      setShowEditModal(false);
       fetchNotes(); // Trigger refetch of notes
     }
   }
 
   return (
     <>
-      <button
-        onClick={handleModalToggle}
-        className="mb-4 flex items-center rounded-lg border border-gray-400 bg-transparent px-5 py-2.5 text-sm font-medium text-gray-700 hover:border-gray-800 hover:bg-gray-800 hover:text-gray-100 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-200">
-        <HiPlus className="mr-1 h-5 w-5" />
-        Add Note
-      </button>
-
       {/* Modal */}
-      {showModal && (
+      {showEditModal && (
         <div
           id="defaultModal"
           tabIndex={-1}
@@ -72,11 +73,11 @@ export default function AddNote({ fetchNotes }: AddNoteProps) {
             {/* Modal header */}
             <div className="mb-4 flex items-center justify-between rounded-t border-b pb-4 sm:mb-5">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                Add Note
+                Edit Note
               </h3>
               <button
                 type="button"
-                onClick={handleModalToggle}
+                onClick={handleEditModalToggle}
                 className="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900"
                 data-modal-toggle="defaultModal">
                 <MdClose className="h-6 w-6" />
@@ -95,6 +96,7 @@ export default function AddNote({ fetchNotes }: AddNoteProps) {
                   <input
                     type="text"
                     id="title"
+                    value={note.title}
                     className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-blue-600"
                     placeholder="Type note title"
                     required
@@ -109,6 +111,7 @@ export default function AddNote({ fetchNotes }: AddNoteProps) {
                   </label>
                   <select
                     id="category"
+                    value={note.category}
                     className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-blue-500"
                     {...register("category")}>
                     <option value="Personal">Personal</option>
@@ -131,7 +134,7 @@ export default function AddNote({ fetchNotes }: AddNoteProps) {
                     Note Content
                   </label>
                   <div className="mb-4 w-full rounded-lg border border-gray-200 bg-gray-50 dark:border-gray-600 dark:bg-gray-700">
-                    <div className="flex items-center justify-between border-b px-3 py-2 dark:border-gray-600">
+                    {/* <div className="flex items-center justify-between border-b px-3 py-2 dark:border-gray-600">
                       <div className="flex flex-wrap items-center divide-gray-200 dark:divide-gray-600 sm:divide-x">
                         <div className="flex items-center space-x-1 sm:pr-4">
                           <button
@@ -201,10 +204,11 @@ export default function AddNote({ fetchNotes }: AddNoteProps) {
                       <button className="flex items-center rounded-lg border border-gray-400 bg-transparent px-4 py-1.5 text-sm font-medium text-gray-700 hover:border-gray-800 hover:bg-gray-800 hover:text-gray-100 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-200">
                         Preview
                       </button>
-                    </div>
+                    </div> */}
                     <div className="rounded-b-lg bg-white px-4 py-2 dark:bg-gray-800">
                       <textarea
                         id="content"
+                        value={note.content}
                         rows={8}
                         className="block w-full border-0 bg-white px-0 text-sm text-gray-800 outline-none focus:ring-0 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400"
                         placeholder="Write your note content here"
@@ -217,7 +221,7 @@ export default function AddNote({ fetchNotes }: AddNoteProps) {
               <button
                 type="submit"
                 className="inline-flex items-center rounded-lg bg-gray-800 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300">
-                <HiPlus className="mr-1 h-5 w-5" />
+                <FaSave className="mr-1 h-5 w-5" />
                 Add new note
               </button>
             </form>

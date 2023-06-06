@@ -1,4 +1,5 @@
 import { formatDateTime } from "@/utils/DateTime";
+import { Dispatch, SetStateAction } from "react";
 import { FaEdit, FaRegTrashAlt } from "react-icons/fa";
 import { HiOutlineClock } from "react-icons/hi";
 import { MdClose } from "react-icons/md";
@@ -13,18 +14,27 @@ interface Note {
 
 interface NoteProps {
   note: Note;
-  handleModalToggle: (note: Note) => void;
+  handleNoteModalToggle: (note: Note) => void;
+  showEditModal: boolean;
+  setShowEditModal: Dispatch<SetStateAction<boolean>>;
   handleDeleteNote: (id: string) => void;
 }
 
 export default function Note({
   note,
-  handleModalToggle,
+  handleNoteModalToggle,
+  showEditModal,
+  setShowEditModal,
   handleDeleteNote,
 }: NoteProps) {
+  const updateNote = () => {
+    handleNoteModalToggle;
+    setShowEditModal(!showEditModal);
+  };
+
   const deleteNote = () => {
     handleDeleteNote(note.id);
-    handleModalToggle(note);
+    handleNoteModalToggle(note);
   };
 
   return (
@@ -42,7 +52,7 @@ export default function Note({
             <h2 className="text-xl font-semibold text-gray-900">Note</h2>
             <button
               type="button"
-              onClick={() => handleModalToggle(note)}
+              onClick={() => handleNoteModalToggle(note)}
               className="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900"
               data-modal-toggle="defaultModal">
               <MdClose className="h-6 w-6" />
@@ -71,6 +81,7 @@ export default function Note({
           <div className="flex items-center space-x-4 p-3">
             <button
               type="button"
+              onClick={updateNote}
               className="inline-flex items-center rounded-lg border border-blue-700 bg-transparent px-5 py-2.5 text-center text-sm font-medium text-blue-700 hover:bg-blue-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300">
               <FaEdit className="-ml-1 mr-1 h-4 w-4" />
               Edit
