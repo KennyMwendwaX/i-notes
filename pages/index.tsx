@@ -2,6 +2,7 @@ import AddNote from "@/components/AddNote";
 import EditNote from "@/components/EditNote";
 import Note from "@/components/Note";
 import NoteItem from "@/components/NoteItem";
+import Head from "next/head";
 import { useEffect, useState } from "react";
 
 interface Note {
@@ -56,6 +57,12 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>iNotes</title>
+        <meta name="description" content="iNotes is notes web application" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="container mx-auto mb-2 px-5 pt-20">
         <AddNote fetchNotes={fetchNotes} />
         <div className="-m-4 flex flex-wrap">
