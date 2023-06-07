@@ -68,10 +68,10 @@ export default function EditNote({
           aria-hidden="true"
           className="fixed left-0 right-0 top-0 z-50 flex h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden bg-black bg-opacity-50">
           {/* Modal content */}
-          <div className="relative w-full max-w-2xl rounded-lg bg-white p-4 shadow sm:p-5">
+          <div className="relative w-full max-w-2xl rounded-lg bg-white p-4 shadow dark:bg-gray-800 sm:p-5">
             {/* Modal header */}
             <div className="mb-4 flex items-center justify-between rounded-t border-b pb-4 sm:mb-5">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                 Edit Note
               </h3>
               <button
@@ -89,13 +89,13 @@ export default function EditNote({
                 <div className="mb-3">
                   <label
                     htmlFor="title"
-                    className="mb-2 block text-sm font-medium text-gray-900">
+                    className="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-200">
                     Title
                   </label>
                   <input
                     type="text"
                     id="title"
-                    className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-blue-600"
+                    className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-blue-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                     placeholder="Type note title"
                     required
                     {...register("title")}
@@ -104,12 +104,12 @@ export default function EditNote({
                 <div className="mb-3">
                   <label
                     htmlFor="category"
-                    className="mb-2 block text-sm font-medium text-gray-900">
+                    className="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-200">
                     Category
                   </label>
                   <select
                     id="category"
-                    className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+                    className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                     {...register("category")}>
                     <option value="Personal">Personal</option>
                     <option value="Home">Home</option>
@@ -117,6 +117,7 @@ export default function EditNote({
                     <option value="Goals">Goals</option>
                     <option value="Education">Education</option>
                     <option value="Finance">Finance</option>
+                    <option value="Fashion">Fashion</option>
                     <option value="Entertainment">Entertainment</option>
                     <option value="Recipes">Recipes</option>
                     <option value="Health and Fitness">
@@ -127,13 +128,13 @@ export default function EditNote({
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="body"
-                    className="mb-2 block text-sm font-medium text-gray-900">
+                    className="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-200">
                     Note Content
                   </label>
                   <textarea
                     id="content"
                     rows={8}
-                    className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+                    className="dark:focus:border-blue-500s block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:ring-blue-500"
                     placeholder="Write your note content here"
                     required
                     {...register("content")}></textarea>
@@ -141,7 +142,7 @@ export default function EditNote({
               </div>
               <button
                 type="submit"
-                className="inline-flex items-center rounded-lg bg-gray-800 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300">
+                className="mb-4 flex items-center rounded-lg border border-gray-400 bg-transparent px-5 py-2.5 text-sm font-medium text-gray-700 hover:border-gray-800 hover:bg-gray-800 hover:text-gray-100 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:text-gray-200 dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">
                 <BsSave className="mr-1 h-4 w-4" />
                 Update note
               </button>

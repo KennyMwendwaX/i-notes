@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <main className={poppins.className}>
-        <div className="min-h-screen bg-gray-100">
+        <div className="min-h-screen bg-gray-100 dark:bg-slate-900">
           <Navbar />
           <Component {...pageProps} />
         </div>

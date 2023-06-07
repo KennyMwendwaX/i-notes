@@ -8,7 +8,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed left-0 top-0 z-20 w-full bg-gray-200 px-2 py-2.5 dark:bg-gray-800 sm:px-4">
+      <nav className="fixed left-0 top-0 z-20 w-full bg-gray-200 px-2 py-2.5 dark:bg-slate-800 sm:px-4">
         <div className="container mx-auto flex flex-wrap items-center justify-between">
           <Link href="/" className="flex items-center">
             <span className="self-center whitespace-nowrap font-mono text-xl font-semibold tracking-tight text-gray-800 dark:text-gray-100">
@@ -61,7 +61,7 @@ export default function Navbar() {
               <input
                 type="text"
                 id="search-navbar"
-                className="block w-full rounded-lg border border-gray-500 bg-gray-50 p-2 pl-10 text-sm text-gray-800 focus:border-blue-600 focus:outline-none dark:bg-gray-600 dark:text-gray-200 dark:focus:border-indigo-600"
+                className="block w-full rounded-lg border border-gray-500 bg-gray-50 p-2 pl-10 text-sm text-gray-800 focus:border-blue-600 focus:outline-none dark:bg-slate-600 dark:text-gray-200 dark:focus:border-indigo-600"
                 placeholder="Search..."
               />
             </div>

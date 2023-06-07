@@ -38,7 +38,7 @@ export default function Note({
   };
 
   return (
-    <div className="container mx-auto mb-2 px-5 py-20">
+    <div className="container mx-auto mb-2 px-5 pt-20">
       {/* Modal */}
       <div
         id="defaultModal"
@@ -46,10 +46,12 @@ export default function Note({
         aria-hidden="true"
         className="fixed left-0 right-0 top-0 z-50 flex h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden bg-black bg-opacity-50">
         {/* Modal content */}
-        <div className="relative w-full max-w-2xl rounded-lg bg-gray-50 p-4 shadow sm:p-5">
+        <div className="relative w-full max-w-2xl rounded-lg bg-white p-4 shadow dark:bg-gray-800 sm:p-5">
           {/* Modal header */}
-          <div className="mb-4 flex items-center justify-between rounded-t border-b pb-3 sm:mb-5">
-            <h2 className="text-xl font-semibold text-gray-900">Note</h2>
+          <div className="mb-4 flex items-center justify-between rounded-t border-b pb-4 sm:mb-5">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+              Note
+            </h3>
             <button
               type="button"
               onClick={() => handleNoteModalToggle(note)}
@@ -60,22 +62,22 @@ export default function Note({
             </button>
           </div>
           {/* Modal body */}
-          <h1 className="title-font mb-3 text-xl font-bold text-gray-900 sm:text-2xl">
+          <h1 className="title-font mb-3 text-xl font-bold text-gray-900 dark:text-gray-100 sm:text-2xl">
             {note.title}
           </h1>
           <div className="flex items-center justify-between border-b border-gray-200 pb-4">
-            <span className="inline-block rounded bg-indigo-100 px-2 py-1 text-sm font-medium tracking-widest text-indigo-600">
+            <span className="inline-block rounded bg-indigo-100 px-2 py-1 text-sm font-medium tracking-widest text-indigo-600 dark:bg-indigo-600 dark:text-gray-100">
               {note.category}
             </span>
             <span
               aria-label="time"
               role="contentinfo"
-              className="flex items-center rounded-full border border-gray-800 px-3 py-1 text-sm text-gray-800 dark:border-gray-700 dark:text-gray-400">
+              className="flex items-center rounded-full border border-gray-800 px-3 py-1 text-sm text-gray-800 dark:border-gray-200 dark:text-gray-200">
               <HiOutlineClock />
               <p className="ml-2">{formatDateTime(note.createdAt)}</p>
             </span>
           </div>
-          <div className="border-b border-gray-200 p-3 text-gray-600">
+          <div className="border-b border-gray-200 p-3 text-gray-600 dark:text-gray-300">
             {note.content}
           </div>
           <div className="flex items-center space-x-4 p-3">
