@@ -1,8 +1,11 @@
-import { FaSearch, FaBars } from "react-icons/fa";
-import { BsMoonStarsFill } from "react-icons/bs";
 import Link from "next/link";
+import useColorMode from "@/hooks/useColorMode";
+import { FaSearch, FaBars } from "react-icons/fa";
+import { BsMoonStarsFill, BsSunFill } from "react-icons/bs";
 
 export default function Navbar() {
+  const [theme, setTheme] = useColorMode();
+
   return (
     <>
       <nav className="fixed left-0 top-0 z-20 w-full bg-gray-200 px-2 py-2.5 dark:bg-gray-800 sm:px-4">
@@ -15,8 +18,13 @@ export default function Navbar() {
           <div className="flex items-center md:order-2">
             <button
               type="button"
+              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
               className="mr-4 rounded-lg p-2.5 text-sm text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700">
-              <BsMoonStarsFill className="h-6 w-6" />
+              {theme === "light" ? (
+                <BsMoonStarsFill className="h-6 w-6" />
+              ) : (
+                <BsSunFill className="h-6 w-6" />
+              )}
 
               <span className="sr-only">Toggle dark mode</span>
             </button>
