@@ -33,8 +33,6 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 3.  [http://localhost:3000/api/update/id](http://localhost:3000/api/update/id) - This api endpoint is used to update the selected note contents.
 4.  [http://localhost:3000/api/delete/id](http://localhost:3000/api/delete/id) - This api endpoint is used to delete the selected note.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Poppins, a custom Google Font.
-
 ## Technologies Used
 
 1. [Next.js](https://nextjs.org/docs) - learn about Next.js features and API.
