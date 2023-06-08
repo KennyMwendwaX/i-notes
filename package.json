@@ -11,7 +11,6 @@
     "buildcss": "npx tailwindcss -o styles/globals.css --minify"
   },
   "dependencies": {
-    "@hookform/resolvers": "^3.1.0",
     "@prisma/client": "^4.14.1",
     "@types/node": "20.2.1",
     "@types/react": "18.2.6",
@@ -27,12 +26,10 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.9",
     "tailwindcss": "3.3.2",
-    "typescript": "5.0.4",
-    "zod": "^3.21.4"
+    "typescript": "5.0.4"
   },
   "devDependencies": {
     "prettier-plugin-tailwindcss": "^0.3.0",
-    "react-icons": "^4.8.0",
-    "tailwind-scrollbar": "^3.0.4"
+    "react-icons": "^4.8.0"
   }
 }

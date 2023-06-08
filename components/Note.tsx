@@ -65,7 +65,7 @@ export default function Note({
           <h1 className="title-font mb-3 text-xl font-bold text-gray-900 dark:text-gray-100 sm:text-2xl">
             {note.title}
           </h1>
-          <div className="flex items-center justify-between border-b border-gray-200 pb-4">
+          <div className="flex items-center justify-between pb-4">
             <span className="inline-block rounded bg-indigo-100 px-2 py-1 text-sm font-medium tracking-widest text-indigo-600 dark:bg-indigo-600 dark:text-gray-100">
               {note.category}
             </span>
@@ -77,9 +77,14 @@ export default function Note({
               <p className="ml-2">{formatDateTime(note.createdAt)}</p>
             </span>
           </div>
-          <div className="border-b border-gray-200 p-3 text-gray-600 dark:text-gray-300">
-            {note.content}
-          </div>
+          <textarea
+            id="content"
+            value={note.content}
+            rows={8}
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:outline-none focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:ring-blue-500"
+            placeholder="Write your note content here"
+            readOnly
+            required></textarea>
           <div className="flex items-center space-x-4 p-3">
             <button
               type="button"
