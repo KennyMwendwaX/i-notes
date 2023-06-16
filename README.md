@@ -8,7 +8,11 @@ First, Create a .env file in the root directory and add a DATABASE_URL environme
 DATABASE_URL="postgresql://DB_USER:USER_PASSWORD@localhost:5432/DB_NAME"
 ```
 
-For this to work correctly you must use a SQL Database.
+For this to work correctly you must use a SQL Database, update your database using the prisma schema by running the command:
+
+```bash
+npx prisma migrate dev
+```
 
 Then, run the development server:
 
