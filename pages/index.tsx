@@ -42,7 +42,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchNotes();
-  }, [notes]);
+  }, []);
 
   const handleDeleteNote = async (id: string) => {
     try {
